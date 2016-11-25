@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implements hook_help().
+ */
+function clock_help($route_name) {
+  switch ($route_name) {
+    case 'block':
+    $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Clock module allows the display of a clock on your site.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Administering the clock') . '</dt>';
+      $output .= '<dd>' . t('Since the clock is a block, it can be administered via its <a href="@clock-settings">block settings page</a> which is accessible from the <a href="@block-admin">block administration page</a>. In addition to the usual block configuration options there are a number of options.', array(
+        '@clock-settings' => url('admin/structure/block/manage/clock/clock/configure'),
+        '@block-admin' => url('admin/structure/block'),
+      )) . '</dd>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Time zone') . '</dt>';
+      $output .= '<dd>' . t('The time zone of the clock.') . '</dd>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Site time zone') . '</dt>';
+      $output .= '<dd>' . t('The time zone that has been set on the <a href="@regional-admin">regional settings page</a>.', array(
+        '@regional-admin' => url('admin/config/regional/settings'),
+      )) . '</dd>';
+      $output .= '<dt>' . t('User time zone') . '</dt>';
+      $output .= '<dd>' . t('This option will only show up, if user-configurable time zones are enabled. The time zone the user has selected.') . '</dd>';
+      $output .= '<dt>' . t('Local time zone') . '</dt>';
+      $output .= '<dd>' . t('The local time zone on the computer of the visiting user (anonymous and authenticated). Since JavaScript is used to calculate this time, it falls back to the site time zone if the visitor has JavaScript disabled.');
+      $output .= '<dt>' . t('Custom time zone') . '</dt>';
+      $output .= '<dd>' . t('A custom time zone that can be selected in the select box below the radio buttons.') . '</dd>';
+      $output .= '</dl>';
+      $output .= '<dt>' . t('Date format') . '</dt>';
+      $output .= '<dd>' . t('The date format that the clock is to be displayed in. All of the date types that have been set on the <a href="@format-admin">date and time settings page</a> are available here.', array(
+        '@format-admin' => url('admin/config/regional/date-time'),
+      )) . '</dd>';
+      $output .= '<dt>' . t('JavaScript updating') . '</dt>';
+      $output .= '<dd>' . t('Whether or not the clock should be updated continuously via JavaScript. This is especially useful if seconds are displayed. It only works if the visitor has JavaScript enabled.') . '</dd>';
+      $output .= '</dl>';
+      $output .= '</dl>';
+      return $output;
+  }
+}
