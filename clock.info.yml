@@ -1,0 +1,5 @@
+type: module
+name: Clock
+description: 'Provides a block displaying the current time.'
+package: Date/Time
+core: 8.x
